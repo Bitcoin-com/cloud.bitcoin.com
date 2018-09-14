@@ -8,3 +8,7 @@ yarn-error.log
 .DS_Store
 
 .nyc_output
+.env
+start-local-server
+test-local-server
+coverage
