@@ -1,18 +1,14 @@
 // @flow
 
-import palette from './palette';
-
 const defaultTheme = {
-  primary: palette.sun,
-  primaryContrast: 'blue',
-  primaryMuted: palette.oldLace,
-  secondary: palette.emerald,
-  secondaryContrast: palette.goblin,
-  foreground: palette.woodsmoke,
-  foregroundMuted: palette.tundora,
-  background: palette.white,
-  backgroundMuted: palette.silver,
-
+  primary100: '#F9F0DD',
+  primary200: '#F9E8C4',
+  primary500: '#f9b016',
+  primary600: '#D79C05',
+  foreground900: '#151B1E',
+  background100: '#FFFFFF',
+  background300: '#bbbbbb',
+  danger: '#fa3f15'
 }
 
-export { defaultTheme};
+export { defaultTheme }

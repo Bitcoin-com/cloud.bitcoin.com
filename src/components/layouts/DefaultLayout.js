@@ -2,13 +2,15 @@
 
 import * as React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import { defaultTheme } from 'styles/themes'
 import './base.css'
 
-import NavBar from 'components/NavBar';
+import HelmetPlus from 'components/HelmetPlus'
+import NavBar from 'components/NavBar'
+
+import Favicon from 'images/favicon.png'
 
 type Props = {
   children: React.Node,
@@ -16,11 +18,12 @@ type Props = {
 }
 
 type Data = {
-  site: { siteMetadata: { title: string } },
+  site: { siteMetadata: { title: string } }
 }
 
 const Main = styled.div`
   position: relative;
+  min-height: 85vh;
 `
 
 const DefaultLayout = ({ children, location }: Props) => (
@@ -36,24 +39,23 @@ const DefaultLayout = ({ children, location }: Props) => (
     `}
     render={(data: Data) => (
       <>
-        <Helmet
+        <HelmetPlus
           title={data.site.siteMetadata.title}
-          meta={[
-            {
-              name: 'description',
-              content:
-                'bitbox based bitcoin.com developer platform and resources, ',
-            },
-            {
-              name: 'keywords',
-              content:
-                'bitbox, developer tools, bitcoin, bitcoin cash, BCH, wormhole, sdk, api',
-            },
+          description={
+            'Cloud platform for all your Bitcoin Cash (BCH) development needs.'
+          }
+          keywords={[
+            'developer tools',
+            'bitcoin',
+            'bitcoin cash',
+            'BCH',
+            'development tools',
+            'cloud platform'
           ]}
+          location={location}
+          image={Favicon}
         >
-          <html lang="en" />
-
-          {/* Consider nuking these in favor of a developer page specific header/footer*/}
+          <meta charSet="utf-8" />
           <script>
             var BitcoinMenuWidth = 1152; var BitcoinMenuLang = 'en';
           </script>
@@ -62,19 +64,17 @@ const DefaultLayout = ({ children, location }: Props) => (
             src="https://menu.cdn.bitcoindotcom.net/the-footer/dist/universal-footer.js"
           />
           <script src="https://menu.cdn.bitcoindotcom.net/the-menu/dist/universal-menu.js" />
-        </Helmet>
+        </HelmetPlus>
         <ThemeProvider theme={defaultTheme}>
           <Main>
-            <NavBar pathname={location ? location.pathname : ''}/>
+            <NavBar pathname={location ? location.pathname : ''} />
             {children}
+            {/* <ShareFooter location={location} /> */}
           </Main>
         </ThemeProvider>
       </>
     )}
   />
 )
-
-
-// const DefaultLayout = ({ children }: Props) => <div>{children}</div>
 
 export default DefaultLayout

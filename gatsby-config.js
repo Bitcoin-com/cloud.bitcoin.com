@@ -1,58 +1,53 @@
 module.exports = {
   siteMetadata: {
-    title: 'developer.bitcoin.com',
+    title: 'Bitcoin.com Cloud Platform',
+    description: 'Cloud platform for Bitcoin.com',
+    siteUrl: 'https://cloud.bitcoin.com'
   },
   plugins: [
+    `gatsby-plugin-flow`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data/`,
-      },
+        path: `${__dirname}/src/data/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`
+      }
     },
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'cloud-bitcoin-com',
+        short_name: 'cloud.bitcoin.com',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#fab915',
+        background_color: '#FFFFFF',
+        theme_color: '#f9b016',
         display: 'minimal-ui',
-        icon: 'src/images/bitcoin.ico', // This path is relative to the root of the site.
-      },
+        icon: 'src/images/favicon.png' // This path is relative to the root of the site.
+      }
     },
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
         id: 'GTM-5N6TL56',
-        includeInDevelopment: false,
+        includeInDevelopment: false
         // Specify optional GTM environment details.
         // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_AUTH_STRING",
         // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_PREVIEW_NAME",
-      },
+      }
     },
     'gatsby-plugin-offline',
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        excerpt_separator: `<!-- end -->`,
-        plugins: [
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-transformer-sharp`,
-          `gatsby-plugin-sharp`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 900,
-              linkImagesToOriginal: false,
-            },
-          },
-        ],
-      },
-    },
-  ],
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-sitemap`
+  ]
 }
