@@ -64,6 +64,9 @@ class NavBar extends React.PureComponent<Props> {
             >
               Dashboard
             </NavItem>
+            <NavItem monospace="true" to="/login" isActive={dashboardActive}>
+              Login
+            </NavItem>
           </NavLayout>
         </Container>
       </Main>
