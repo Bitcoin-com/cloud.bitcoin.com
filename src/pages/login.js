@@ -19,6 +19,8 @@ const OutMsg = styled.p`
   size: 18px;
 `
 
+const SERVER = `http://localhost:3000/v2/`
+
 let _this
 
 class LoginForm extends React.Component {
@@ -29,7 +31,7 @@ class LoginForm extends React.Component {
 
     this.state = {
       message: '',
-      username: '',
+      email: '',
       password: ''
     }
   }
@@ -44,7 +46,7 @@ class LoginForm extends React.Component {
           <form>
             Login:
             <br />
-            <input type="text" name="username" onChange={this.handleUpdate} />
+            <input type="text" name="email" onChange={this.handleUpdate} />
             <br />
             Password:
             <br />
@@ -97,25 +99,37 @@ class LoginForm extends React.Component {
         },
         body: JSON.stringify({
           user: {
-            username: _this.state.username,
+            email: _this.state.email,
             password: _this.state.password
           }
         })
       }
 
-      const data = await fetch(`${SERVER}/users/`, options)
-      const users = await data.json()
-      console.log(`users: ${JSON.stringify(users, null, 2)}`)
+      const data = await fetch(`${SERVER}user/`, options)
+      const result = await data.json()
+      //console.log(`result: ${JSON.stringify(result, null, 2)}`)
 
-      //console.log(`name: ${users.user.username}`)
+      if (result.success)
+        _this.setState(prevState => ({
+          message: `User successfully created!`
+        }))
+      else {
+        _this.setState(prevState => ({
+          message: `User creation failed. Check console for details.`
+        }))
+        console.log(`result: ${JSON.stringify(result, null, 2)}`)
+      }
+
+      //console.log(`name: ${users.user.email}`)
       //console.log(`token: ${users.token}`)
-
+      /*
       setUser({
-        username: users.user.username,
+        email: users.user.email,
         jwt: users.token
       })
 
       navigate(`/app/profile`)
+*/
     } catch (err) {
       // If something goes wrong with auth, return false.
       //return false;
