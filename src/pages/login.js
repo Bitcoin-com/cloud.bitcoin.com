@@ -82,12 +82,14 @@ class LoginForm extends React.Component {
     )
   }
 
+  // Updates the email and password as the user types.
   handleUpdate(event) {
     _this.setState({
       [event.target.name]: event.target.value
     })
   }
 
+  // User clicked on the 'Create' button.
   async createClick(event) {
     event.preventDefault()
 
@@ -119,28 +121,56 @@ class LoginForm extends React.Component {
         }))
         console.log(`result: ${JSON.stringify(result, null, 2)}`)
       }
-
-      //console.log(`name: ${users.user.email}`)
-      //console.log(`token: ${users.token}`)
-      /*
-      setUser({
-        email: users.user.email,
-        jwt: users.token
-      })
-
-      navigate(`/app/profile`)
-*/
     } catch (err) {
-      // If something goes wrong with auth, return false.
-      //return false;
+      // Update the message on the web page with the error message.
       _this.setState(prevState => ({
         message: err.message
       }))
     }
   }
 
+  // User clicked on the 'Login' button.
   async loginClick(event) {
     event.preventDefault()
+
+    try {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: {
+            email: _this.state.email,
+            password: _this.state.password
+          }
+        })
+      }
+
+      const data = await fetch(`${SERVER}user/login`, options)
+      const result = await data.json()
+      console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      const token = result.user.token
+
+      // Display token on screen.
+      if (token) {
+        _this.setState(prevState => ({
+          message: token
+        }))
+
+        // Otherwise, Clear the message display.
+      } else {
+        _this.setState(prevState => ({
+          message: ''
+        }))
+      }
+    } catch (err) {
+      // Update the message on the web page with the error message.
+      _this.setState(prevState => ({
+        message: err.message
+      }))
+    }
 
     //_this.setState(prevState => ({
     //  message: "You clicked the Login button."
@@ -148,9 +178,7 @@ class LoginForm extends React.Component {
 
     //console.log(`state: ${JSON.stringify(_this.state,null,2)}`)
 
-    await handleLogin(_this.state)
-
-    navigate(`/app/profile`)
+    //navigate(`/app/profile`)
   }
 }
 
