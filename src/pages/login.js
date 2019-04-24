@@ -2,10 +2,22 @@
 
 import React from 'react'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
 
 import DefaultLayout from 'components/layouts/DefaultLayout'
 import HelmetPlus from 'components/HelmetPlus'
 import Container from 'components/Container'
+
+const StyledButton = styled.a`
+  margin: 10px;
+  margin-bottom: 25px;
+`
+
+const OutMsg = styled.p`
+  color: red;
+  font-weight: bold;
+  size: 18px;
+`
 
 const IndexPage = ({ location }) => (
   <DefaultLayout location={location}>
