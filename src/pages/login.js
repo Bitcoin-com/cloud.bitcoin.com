@@ -3,6 +3,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import CashId from 'react-cashid'
 
 import DefaultLayout from 'components/layouts/DefaultLayout'
 import HelmetPlus from 'components/HelmetPlus'
@@ -76,6 +77,30 @@ class LoginForm extends React.Component {
             <br />
             <OutMsg>{this.state.message}</OutMsg>
           </form>
+
+          <br />
+
+          <CashId
+            domain="rest.bchtest.net"
+            path="/v2/cashid"
+            action="login"
+            data="newsletter"
+            metadata={{
+              required: {
+                identity: ['name', 'family'],
+                position: ['country'],
+                contact: ['email']
+              },
+              optional: {
+                identity: ['age', 'gender'],
+                position: ['city']
+              }
+            }}
+            color="orange"
+            qr="false"
+          />
+
+          <br />
 
           <Link to="/">Go to Home</Link>
         </Container>
