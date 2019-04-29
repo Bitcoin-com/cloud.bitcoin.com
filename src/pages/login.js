@@ -19,7 +19,8 @@ const OutMsg = styled.p`
   size: 18px;
 `
 
-const SERVER = `http://localhost:3000/v2/`
+//const SERVER = `http://localhost:3000/v2/`
+const SERVER = `/v2/`
 
 let _this
 
