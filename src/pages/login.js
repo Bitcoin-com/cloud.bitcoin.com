@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <DefaultLayout location={location}>
+      <DefaultLayout location={this.props.location}>
         <Container>
           <HelmetPlus title="Create User" />
           <h1>Create a User</h1>
