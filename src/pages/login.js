@@ -8,6 +8,7 @@ import CashId from 'react-cashid'
 import DefaultLayout from 'components/layouts/DefaultLayout'
 import HelmetPlus from 'components/HelmetPlus'
 import Container from 'components/Container'
+import LoginCashId from 'components/cashid'
 
 const StyledButton = styled.button`
   margin: 10px;
@@ -80,22 +81,10 @@ class LoginForm extends React.Component {
 
           <br />
 
-          <CashId
+          <LoginCashId
             domain="rest.bchtest.net"
-            path="/v2/cashid"
+            path="/v2/user/cashid"
             action="login"
-            data="newsletter"
-            metadata={{
-              required: {
-                identity: ['name', 'family'],
-                position: ['country'],
-                contact: ['email']
-              },
-              optional: {
-                identity: ['age', 'gender'],
-                position: ['city']
-              }
-            }}
             color="orange"
             qr="false"
           />
