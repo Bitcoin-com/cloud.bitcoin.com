@@ -3,7 +3,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import CashId from 'react-cashid'
 
 import DefaultLayout from 'components/layouts/DefaultLayout'
 import HelmetPlus from 'components/HelmetPlus'
