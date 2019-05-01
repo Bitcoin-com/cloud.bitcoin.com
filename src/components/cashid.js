@@ -39,7 +39,10 @@ class LoginCashID extends React.Component {
   }
 
   badgerSign(cashIDRequest) {
+    const { callback } = this.props
     let web4bch = this.state.web4bch
+    debugger
+
     if (typeof web4bch === undefined) {
       window.open('https://badger.bitcoin.com/', '_blank').focus()
     } else {
@@ -49,6 +52,11 @@ class LoginCashID extends React.Component {
       ) {
         console.log('res: ', res)
         console.log('TODO: Display JWT token in console and on page.')
+
+        if (callback) {
+          callback()
+          //console.log(`callback was defined!`)
+        }
 
         if (err) {
           console.error(`Error in CashID: `, err)

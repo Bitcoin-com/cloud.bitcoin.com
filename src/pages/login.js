@@ -8,6 +8,7 @@ import DefaultLayout from 'components/layouts/DefaultLayout'
 import HelmetPlus from 'components/HelmetPlus'
 import Container from 'components/Container'
 import LoginCashId from 'components/cashid'
+//import CashId from 'react-cashid';
 
 const StyledButton = styled.button`
   margin: 10px;
@@ -85,7 +86,8 @@ class LoginForm extends React.Component {
             path="/v2/user/cashid"
             action="login"
             color="orange"
-            qr="false"
+            qr={false}
+            callback={this.cashIdSuccess}
           />
 
           <br />
@@ -94,6 +96,11 @@ class LoginForm extends React.Component {
         </Container>
       </DefaultLayout>
     )
+  }
+
+  // This callback is executed when the CashID login completes successfully.
+  cashIdSuccess(data) {
+    console.log(`cashIdSuccess data: ${JSON.stringify(data, null, 2)}`)
   }
 
   // Updates the email and password as the user types.
@@ -197,3 +204,24 @@ class LoginForm extends React.Component {
 }
 
 export default LoginForm
+
+/*
+<LoginCashId
+  domain="rest.bchtest.net"
+  path="/v2/user/cashid"
+  action="login"
+  color="orange"
+  qr="false"
+/>
+*/
+
+/*
+<CashId
+  domain="rest.bchtest.net"
+  path="/v2/user/cashid"
+  action="login"
+  color="orange"
+  qr={false}
+  callback={function() {console.log(`test est test`)}}
+/>
+*/
