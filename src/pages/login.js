@@ -38,6 +38,40 @@ class LoginForm extends React.Component {
       password: ''
     }
   }
+  // <form>
+  //   Login:
+  //   <br />
+  //   <input type="text" name="email" onChange={this.handleUpdate} />
+  //   <br />
+  //   Password:
+  //   <br />
+  //   <input
+  //     type="password"
+  //     name="password"
+  //     onChange={this.handleUpdate}
+  //   />
+  //   <br />
+  //   <StyledButton
+  //     href="#"
+  //     id="createBtn"
+  //     onClick={this.createClick}
+  //     data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al"
+  //   >
+  //     Create
+  //   </StyledButton>
+  //   <StyledButton
+  //     href="#"
+  //     id="loginBtn"
+  //     onClick={this.loginClick}
+  //     data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al"
+  //   >
+  //     Login
+  //   </StyledButton>
+  //   <br />
+  //   <OutMsg>{this.state.message}</OutMsg>
+  // </form>
+  //
+  // <br />
 
   render() {
     return (
@@ -45,41 +79,6 @@ class LoginForm extends React.Component {
         <Container>
           <HelmetPlus title="Create User" />
           <h1>Create a User</h1>
-
-          <form>
-            Login:
-            <br />
-            <input type="text" name="email" onChange={this.handleUpdate} />
-            <br />
-            Password:
-            <br />
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleUpdate}
-            />
-            <br />
-            <StyledButton
-              href="#"
-              id="createBtn"
-              onClick={this.createClick}
-              data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al"
-            >
-              Create
-            </StyledButton>
-            <StyledButton
-              href="#"
-              id="loginBtn"
-              onClick={this.loginClick}
-              data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al"
-            >
-              Login
-            </StyledButton>
-            <br />
-            <OutMsg>{this.state.message}</OutMsg>
-          </form>
-
-          <br />
 
           <LoginCashId
             domain="rest.bchtest.net"
