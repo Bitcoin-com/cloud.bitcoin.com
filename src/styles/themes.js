@@ -1,13 +1,17 @@
 // @flow
 
+import palette from './palette'
+
 const defaultTheme = {
-  primary100: '#F9F0DD',
-  primary200: '#F9E8C4',
+  primary: palette.sun,
+  primaryMuted: palette.oldLace,
+  primary100: '#fdf6e3',
+  primary200: '#ded8c6',
   primary500: '#f9b016',
-  primary600: '#D79C05',
-  foreground900: '#151B1E',
-  background100: '#FFFFFF',
-  background300: '#bbbbbb',
+  primary600: palette.buddhaGold,
+  foreground: palette.woodsmoke,
+  background: palette.white,
+  backgroundMuted: palette.silver,
   danger: '#fa3f15'
 }
 

@@ -8,7 +8,7 @@ import media from 'styles/media'
 import spacing from 'styles/spacing'
 
 // { screen breakpoint, [font-size, line-height]}
-// Absolute pixels so nesting is unaffected;
+// Absolute pixels so nesting is uneffected;
 const sizeMap = {
   small: {
     normal: ['16px', '20px'],
@@ -35,8 +35,8 @@ export const textBase = css`
     css`
       font-size: ${sizeMap['small'][props.size][0]};
       line-height: ${sizeMap['small'][props.size][1]};
-    `}
-  ${media.large`
+    `} 
+    ${media.large`
       font-size: ${sizeMap['large']['normal'][0]};
       line-height: ${sizeMap['large']['normal'][1]};
       ${props =>
@@ -47,11 +47,19 @@ export const textBase = css`
         `}
   `};
 
+  
   /* Weight */
   font-weight: ${props => (props.bold ? 700 : 400)};
 
-  /* Margin */
+  ${props =>
+    props.area &&
+    css`
+      grid-area: ${props.area};
+    `}
 
+
+  /* Margin */
+  
   margin: 0;
 
   ${props =>
@@ -61,7 +69,86 @@ export const textBase = css`
     `}
 
   /* Colors  */
-  color: inherit;
+  color: inherit; 
+  ${props =>
+    props.foreground &&
+    css`
+      color: ${props => props.theme.foreground} !important;
+    `}
+  ${props =>
+    props.background &&
+    css`
+      color: ${props => props.theme.background} !important;
+    `}
+  
+  ${props =>
+    props.primary &&
+    css`
+      color: ${props => props.theme.primary} !important;
+    `}
+    
+  ${props =>
+    props.secondary &&
+    css`
+      color: ${props => props.theme.primary600} !important;
+    `}
+  ${props =>
+    props.color &&
+    css`
+      color: ${props.color} !important;
+    `}
+
+  ${props =>
+    props.muted &&
+    css`
+      opacity: 0.8;
+    `}
+  ${props =>
+    props.muted2 &&
+    css`
+      opacity: 0.65;
+    `}
+
+  ${props =>
+    props.center &&
+    css`
+      text-align: center;
+    `}
+  ${props =>
+    props.right &&
+    css`
+      text-align: right;
+    `}
+  ${props =>
+    props.centerVertical &&
+    css`
+      display: flex;
+      align-items: center;
+    `}
+
+  ${props =>
+    props.monospace &&
+    css`
+      font-family: monospace;
+    `}
+  ${props =>
+    props.capitalize &&
+    css`
+      text-transform: capitalize;
+    `}
+
+  ${props =>
+    props.isTitle &&
+    css`
+      margin-bottom: 10px !important;
+      &::before {
+        content: '';
+        width: 80px;
+        border-bottom: 4px solid ${props => props.theme.primary};
+        position: absolute;
+        bottom: -10px;
+      }
+    `}
 `
 
 const Text = styled.p`

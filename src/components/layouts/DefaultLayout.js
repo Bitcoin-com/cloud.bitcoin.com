@@ -9,6 +9,7 @@ import './base.css'
 
 import HelmetPlus from 'components/HelmetPlus'
 import NavBar from 'components/NavBar'
+import ShareFooter from 'components/ShareFooter'
 
 import Favicon from 'images/favicon.png'
 
@@ -23,7 +24,6 @@ type Data = {
 
 const Main = styled.div`
   position: relative;
-  min-height: 85vh;
 `
 
 const DefaultLayout = ({ children, location }: Props) => (
@@ -42,18 +42,9 @@ const DefaultLayout = ({ children, location }: Props) => (
         <HelmetPlus
           title={data.site.siteMetadata.title}
           description={
-            'Cloud platform for all your Bitcoin Cash (BCH) development needs.'
+            'bitcoin.com developer platform, sdk and resources.  Build on Bitcoin Cash (BCH)'
           }
-          keywords={[
-            'developer tools',
-            'bitcoin',
-            'bitcoin cash',
-            'BCH',
-            'development tools',
-            'cloud platform'
-          ]}
           location={location}
-          image={Favicon}
         >
           <meta charSet="utf-8" />
           <script>
@@ -69,7 +60,7 @@ const DefaultLayout = ({ children, location }: Props) => (
           <Main>
             <NavBar pathname={location ? location.pathname : ''} />
             {children}
-            {/* <ShareFooter location={location} /> */}
+            <ShareFooter location={location} />
           </Main>
         </ThemeProvider>
       </>

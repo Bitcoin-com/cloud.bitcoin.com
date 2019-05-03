@@ -12,7 +12,7 @@ import { textBase } from 'atoms/Text'
 const Main = styled.div`
   position: sticky;
   top: 0;
-  background-color: ${props => props.theme.foreground900};
+  background-color: ${props => props.theme.foreground};
   z-index: 999;
   padding: ${spacing.small2};
 `
@@ -25,7 +25,7 @@ const NavLayout = styled.div`
 const NavItem = styled(Link)`
   ${textBase};
   color: ${props =>
-    props.isActive ? props.theme.primary500 : props.theme.background100};
+    props.isActive ? props.theme.primary : props.theme.background};
   text-decoration: none;
   margin-right: ${spacing.medium};
   &:hover {
@@ -37,7 +37,9 @@ type Props = {
   pathname: string
 }
 
+// TODO: Better method of this to not have false positives like /tutorials/wormhole-3 triggering 2 tabs active
 const dashboardBaseUrls = ['/dashboard']
+const loginBaseUrls = ['/login']
 
 class NavBar extends React.PureComponent<Props> {
   render() {
@@ -49,7 +51,10 @@ class NavBar extends React.PureComponent<Props> {
       (prev, curr) => prev || pathname.includes(curr),
       false
     )
-
+    const loginActive = loginBaseUrls.reduce(
+      (prev, curr) => prev || pathname.includes(curr),
+      false
+    )
     return (
       <Main>
         <Container>
@@ -64,7 +69,7 @@ class NavBar extends React.PureComponent<Props> {
             >
               Dashboard
             </NavItem>
-            <NavItem monospace="true" to="/login" isActive={dashboardActive}>
+            <NavItem monospace="true" to="/login" isActive={loginActive}>
               Login
             </NavItem>
           </NavLayout>
