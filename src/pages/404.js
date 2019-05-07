@@ -7,10 +7,14 @@ import DefaultLayout from 'components/layouts/DefaultLayout'
 import HelmetPlus from 'components/HelmetPlus'
 import Container from 'components/Container'
 
-const NotFoundPage = () => (
-  <DefaultLayout>
+type Props = {
+  location: Object
+}
+
+const NotFoundPage = ({ location }: Props) => (
+  <DefaultLayout location={location}>
     <Container>
-      <HelmetPlus title="404: Page Not found" />
+      <HelmetPlus location={location} title="404: Page Not found" />
       <h1>NOT FOUND</h1>
       <p>You just hit a route that doesn&#39;t exist...</p>
       <Link to="/">Back to cloud home</Link>

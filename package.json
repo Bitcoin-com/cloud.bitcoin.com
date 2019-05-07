@@ -4,6 +4,10 @@
   "description": "Cloud platform of bitcoin.com",
   "version": "0.1.0",
   "author": "SpicyPete <peter@bitcoin.com>",
+  "contributors": [
+    "Gabriel Cardona <gabriel@bitcoin.com>",
+    "Chris Troutner <chris.troutner@gmail.com>"
+  ],
   "dependencies": {
     "cashid": "^0.2.5",
     "gatsby": "^2.0.116",
@@ -24,13 +28,18 @@
     "react-cashid": "^0.2.0",
     "react-dom": "^16.8.0",
     "react-helmet": "^5.2.0",
+    "react-icons": "^3.4.0",
     "react-qr-svg": "^2.2.1",
+    "react-syntax-highlighter": "^10.1.3",
     "styled-components": "^4.1.3"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
+  "engines": {
+    "node": ">=10.15.3"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
