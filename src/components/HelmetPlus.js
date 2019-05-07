@@ -67,7 +67,7 @@ class HelmetPlus extends React.PureComponent<Props> {
         {description && (
           <meta property="og:description" content={description} />
         )}
-        <meta name="og:image" content={`${location.origin}/favicon.png`} />}
+        <meta name="og:image" content={`${location.origin}/favicon.png`} />
         {image && (
           <meta property="og:image" content={`${location.origin}${image}`} />
         )}
