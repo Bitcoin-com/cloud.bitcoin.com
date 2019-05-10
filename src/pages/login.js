@@ -9,7 +9,7 @@ import Hero from 'components/Hero'
 import Container from 'components/Container'
 import InfoCard from 'components/InfoCard'
 import HelmetPlus from 'components/HelmetPlus'
-import LoginCashId from 'components/cashid'
+//import LoginCashId from 'components/cashid'
 
 import H3 from 'atoms/H3'
 import H1 from 'atoms/H1'
@@ -76,6 +76,17 @@ class LoginPage extends React.Component {
     this.data = props.data
   }
 
+  // Log in with Badger Button
+  /*
+  <LoginCashId
+    domain="rest.bchtest.net"
+    path="/v2/user/cashid"
+    action="login"
+    color="orange"
+    qr={false}
+    callback={cashIdSuccess}
+  />
+  */
   render() {
     return (
       <DefaultLayout location={this.location}>
@@ -101,16 +112,7 @@ class LoginPage extends React.Component {
         </Hero>
         <Container>
           <h1>Create a User</h1>
-          <LoginCashId
-            domain="rest.bchtest.net"
-            path="/v2/user/cashid"
-            action="login"
-            color="orange"
-            qr={false}
-            callback={cashIdSuccess}
-          />
 
-          <br />
           <form>
             Login:
             <br />
