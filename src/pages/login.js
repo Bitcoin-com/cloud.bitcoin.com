@@ -78,7 +78,7 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <DefaultLayout location={location}>
+      <DefaultLayout location={this.location}>
         <HelmetPlus
           title={`Login - ${this.data.site.siteMetadata.title}`}
           description={
@@ -89,7 +89,7 @@ class LoginPage extends React.Component {
             'develop on bitcoin cash',
             'bitcoin cash resources'
           ]}
-          location={location}
+          location={this.location}
         />
         <Hero image={this.data.heroImage}>
           <HeroLayout>
