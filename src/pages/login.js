@@ -48,8 +48,8 @@ type Props = {
   data: { heroImage: any }
 }
 
-const SERVER = `http://localhost:3000/v1/`
-//const SERVER = `/v2/`
+//const SERVER = `http://localhost:3000/v1/`
+const SERVER = `/v1/`
 
 function cashIdSuccess(data) {
   console.log(`cashIdSuccess data: ${JSON.stringify(data, null, 2)}`)
